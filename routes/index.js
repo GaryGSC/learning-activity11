@@ -32,6 +32,12 @@ router.get('/comments/:comment', function(req, res) {
   res.json(req.comment);
 });
 
+router.delete('/comments/:comment', function(req, res) {
+  console.log("in Delete");
+  req.comment.remove();
+  res.json(req.comment);
+});
+
 router.put('/comments/:comment/upvote', function(req, res, next) {
   req.comment.upvote(function(err, comment){
     if (err) { return next(err); }
